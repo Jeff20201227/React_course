@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Root = styled.div`
   display: flex;
@@ -7,5 +7,5 @@ export const Root = styled.div`
 `
 
 export const Message = styled.h1`
-  color: red;
+  color: black;
 `
