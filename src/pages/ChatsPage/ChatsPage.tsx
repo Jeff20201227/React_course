@@ -1,7 +1,7 @@
 import React from "react"
 import { Container, Typography } from "@mui/material"
 import Chat from "../../components/entity/Chat"
-import { AUTHORS } from "../../constants/users"
+import { AUTHORS } from "../../components/constants/users"
 
 const chats = {
   angryBot: {

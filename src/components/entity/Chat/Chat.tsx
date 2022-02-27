@@ -7,7 +7,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material"
-import { AUTHORS } from "../../../constants/users"
+import { AUTHORS } from "../../../components/constants/users"
 import { makeStyles } from "@mui/styles"
 import { blue, green } from "@mui/material/colors"
 import bot from "../../../assets/image/bot.png"
