@@ -4,7 +4,7 @@ import ChatsPage from "./pages/ChatsPage"
 import { ThemeProvider } from "@mui/material/styles"
 import appTheme from "./constants/appTheme"
 
-const text = "Добрый вечер. Долго мучился с ошибкой TS7016, получилось избавиться от нее с помощью декларирования модулей в файле allowJavaScriptModules.ts"
+const text = "Добрый вечерочек"
 
 function App() {
   return (
