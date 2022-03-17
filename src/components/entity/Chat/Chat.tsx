@@ -7,22 +7,18 @@ import {
   TextField,
   Typography,
 } from "@mui/material"
-import { AUTHORS } from "../../../components/constants/users"
+import { AUTHORS } from "../../../constants/users"
 import { makeStyles } from "@mui/styles"
 import { blue, green } from "@mui/material/colors"
 import bot from "../../../assets/image/bot.png"
 import author from "../../../assets/image/me.png"
+import { Message } from "./model"
 
 interface Props {
   botInfo: {
     author: string
-    text: string
+    texts: string[]
   }
-}
-
-interface Message {
-  author: string
-  text: string
 }
 
 const useStyles = makeStyles({
@@ -39,17 +35,15 @@ const useStyles = makeStyles({
   },
   chatWindow: {
     position: "relative",
-    backgroundColor: "rgb(255, 255, 255, 50%)",
+    backgroundColor: "rgb(255, 255, 255, 25%)",
     padding: "15px 15px 50px 15px",
     borderRadius: "15px",
-    height: "70vh",
+    height: "80vh",
   },
   chipBot: {
-    width: "90%",
     color: blue[700],
   },
   chipAuthor: {
-    width: "90%",
     color: green[700],
   },
   form: {
@@ -65,6 +59,7 @@ const Chat: FC<Props> = ({ botInfo }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const gridRef = useRef<null | HTMLDivElement>(null)
+  const inputRef = useRef<null | HTMLInputElement>(null)
 
   useEffect(() => {
     if (
@@ -76,13 +71,26 @@ const Chat: FC<Props> = ({ botInfo }) => {
       setTimeout(() => {
         setMessage((prev) => [
           ...prev,
-          { author: botInfo.author, text: botInfo.text },
+          {
+            author: botInfo.author,
+            text: botInfo.texts[
+              Math.round(Math.random() * (botInfo.texts.length - 1))
+            ],
+          },
         ])
         gridRef.current && gridRef.current.scrollIntoView(false)
+        inputRef.current?.focus()
         setIsLoading(false)
       }, 1500)
     }
   }, [messages])
+
+  useEffect(() => {
+    if (messages.length) {
+      setMessage([])
+    }
+    inputRef.current?.focus()
+  }, [botInfo])
 
   const handlerSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -93,13 +101,10 @@ const Chat: FC<Props> = ({ botInfo }) => {
     setValue("")
   }
 
-  console.log(gridRef)
-
   return (
-    <Grid xs={6} className={classes.chatWindow} flexDirection="column">
+    <Grid className={classes.chatWindow} flexDirection="column">
       <Grid
         container
-        xs={12}
         flexGrow={1}
         alignContent="flex-start"
         className={classes.messages}
@@ -140,21 +145,21 @@ const Chat: FC<Props> = ({ botInfo }) => {
       <form onSubmit={handlerSubmit}>
         <Grid
           container
-          xs={12}
           spacing={4}
           alignItems="center"
           className={classes.form}
         >
-          <Grid item spacing={2} xs={10}>
+          <Grid item xs={9}>
             <TextField
               label="Message"
               variant="standard"
               fullWidth
               value={value}
               onChange={(e) => setValue(e.target.value)}
+              inputRef={inputRef}
             ></TextField>
           </Grid>
-          <Grid item spacing={2} xs={1}>
+          <Grid item xs={2}>
             <Button
               type="submit"
               variant="outlined"
