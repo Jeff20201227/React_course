@@ -1,22 +1,12 @@
-export const AUTHORS: Authors = {
+export const AUTHORS = {
   bots: {
-    angryBot: "Jake",
-    sadBot: "Saddy",
-    romanticBot: "Drama",
-    interestedBot: "Mark",
-    psihologicBot: "Freidy",
+    angryBot: "Джейк",
+    sadBot: "Сэдди",
+    romanticBot: "Драма",
+    interestedBot: "Марк",
+    psihologicBot: "Фрейди",
   },
-  author: "You",
+  author: "Ты",
 }
 
-export type Authors = {
-  bots: { [key in Bots]: string }
-  author: "You"
-}
-
-export type Bots =
-  | "angryBot"
-  | "sadBot"
-  | "romanticBot"
-  | "interestedBot"
-  | "psihologicBot"
+export type Bots = keyof typeof AUTHORS.bots
