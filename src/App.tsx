@@ -1,13 +1,15 @@
 import React from "react"
-import Message from "./components/Message"
 import "./App.css"
-
-const text = "Добрый вечер. Долго мучился с ошибкой TS7016, получилось избавиться от нее с помощью декларирования модулей в файле allowJavaScriptModules.ts"
+import { ThemeProvider } from "@mui/material/styles"
+import appTheme from "./constants/appTheme"
+import AppRouter from "./router/AppRouter"
 
 function App() {
   return (
     <div className="app">
-      <Message message={text} />
+      <ThemeProvider theme={appTheme}>
+        <AppRouter />
+      </ThemeProvider>
     </div>
   )
 }
