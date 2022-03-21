@@ -62,5 +62,5 @@ export const chatsNames: ChatsNames = {
   sadBot: "Грустный Бот",
   romanticBot: "Романтичный Бот",
   interestedBot: "Заинтересованный Бот",
-  psihologicBot: "психологический Бот",
+  psihologicBot: "Психологический Бот",
 }

@@ -7,7 +7,7 @@ const ErrorPage = () => {
     <Layout>
       <Grid container justifyContent="center" mt={6}>
         <Grid item xs={6}>
-          <Alert severity="info">404: Ошибка из-за чего-то</Alert>
+          <Alert severity="info">404: Something went wrong</Alert>
         </Grid>
       </Grid>
     </Layout>
